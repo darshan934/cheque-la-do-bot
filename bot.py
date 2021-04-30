@@ -15,5 +15,10 @@ async def cld(ctx, member):
 	quote= "waiter bhaiya {} ka cheque la do".format(member)
 	await ctx.send(quote)
 
+@bot.command()
+async def gaandu(ctx):
+	quote = "@{} tu gaandu".format(ctx.author)
+	await ctx.send(quote)
+
 
 bot.run(TOKEN)
