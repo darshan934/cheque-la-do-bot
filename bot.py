@@ -2,24 +2,18 @@
 import os
 
 import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-class CustomClient(discord.Client):
-    async def on_ready(self):
-        print(f'{self.user} has connected to Discord!')
+bot = commands.Bot(command_prefix='-')
 
-client = CustomClient()
+@bot.command()
+async def cld(ctx, member):
+	quote= "waiter bhaiya {} ka cheque la do".format(member)
+	await ctx.send(quote)
 
 
-@client.event
-async def on_message(message):
-	if message.author == client.user:
-		return
-
-	if message.content == '-check la do':
-		repsonse = "bhaiya iska cheque la do"
-		await message.channel.send(repsonse)
-client.run(TOKEN)
+bot.run(TOKEN)
